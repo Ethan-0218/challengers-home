@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
-import { BAR_WIDTH } from '../../constants/slidebar.constants';
+import * as S from './SlideBar.styles';
 
 const SlideBar = () => {
   const [show, setShow] = useState(false);
@@ -15,21 +15,10 @@ const SlideBar = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        transition: 'transform 0.3s ease-out',
-        transform: show ? `translateX(-${BAR_WIDTH}px)` : `translateX(0px)`,
-        width: BAR_WIDTH,
-        height,
-        background: 'red',
-        position: 'absolute',
-        right: -BAR_WIDTH,
-        top: 0,
-      }}
-    >
+    <S.Container show={show} height={height}>
       <button onClick={toggle}>Close</button>
       SlideBar
-    </div>
+    </S.Container>
   );
 };
 

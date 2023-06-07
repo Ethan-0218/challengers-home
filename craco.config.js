@@ -5,16 +5,16 @@ module.exports = {
         ...webpackConfig,
         entry: {
           main: [
-            env === "development" &&
-              require.resolve("react-dev-utils/webpackHotDevClient"),
+            env === 'development' &&
+              require.resolve('react-dev-utils/webpackHotDevClient'),
             paths.appIndexJs,
           ].filter(Boolean),
-          content: "./src/chromeServices/content.ts",
-          background: "./src/chromeServices/background.ts",
+          content: './src/chromeServices/content.ts',
+          background: './src/chromeServices/background.ts',
         },
         output: {
           ...webpackConfig.output,
-          filename: "static/js/[name].js",
+          filename: 'static/js/[name].js',
         },
         optimization: {
           ...webpackConfig.optimization,
@@ -22,5 +22,8 @@ module.exports = {
         },
       };
     },
+  },
+  bable: {
+    plugins: ['@emotion'],
   },
 };
