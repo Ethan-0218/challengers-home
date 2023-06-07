@@ -7,8 +7,11 @@ export const Container = styled.div<{ show: boolean; height: number }>`
     show ? `translateX(-${BAR_WIDTH}px)` : `translateX(0px)`};
   width: ${BAR_WIDTH}px;
   height: ${({ height }) => height}px;
-  background: red;
   position: absolute;
   right: -${BAR_WIDTH}px;
   top: 0px;
+  border-radius: 40px 0 0 40px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 7px 0px 20px rgba(0, 0, 0, 0.05);
 `;

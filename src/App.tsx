@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import SlideBar, { toggle } from './components/SlideBar/SlideBar';
 
 function App() {
+  useEffect(() => {
+    toggle();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +24,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <SlideBar />
     </div>
   );
 }

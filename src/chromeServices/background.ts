@@ -1,7 +1,7 @@
-import { ToggleMessage } from "../types";
+import { ToggleMessage } from '../types';
 
 chrome.action.onClicked.addListener(async (tab) => {
   await chrome.tabs.sendMessage(tab.id || 0, {
-    type: "TOGGLE",
+    type: 'TOGGLE',
   } as ToggleMessage);
 });

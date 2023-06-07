@@ -1,3 +1,5 @@
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
 module.exports = {
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
@@ -21,6 +23,13 @@ module.exports = {
           runtimeChunk: false,
         },
       };
+    },
+    plugins: {
+      add: [
+        new NodePolyfillPlugin({
+          excludeAliases: ['console'],
+        }),
+      ],
     },
   },
   bable: {

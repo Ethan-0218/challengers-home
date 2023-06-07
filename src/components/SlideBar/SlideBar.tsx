@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
 import * as S from './SlideBar.styles';
+import { RecoilRoot } from 'recoil';
+import BookmarkList from './components/BookmarkList/BookmarkList';
+import Header from './components/Header/Header';
 
 const SlideBar = () => {
   const [show, setShow] = useState(false);
@@ -15,15 +18,17 @@ const SlideBar = () => {
   }, []);
 
   return (
-    <S.Container show={show} height={height}>
-      <button onClick={toggle}>Close</button>
-      SlideBar
-    </S.Container>
+    <RecoilRoot>
+      <S.Container show={show} height={height}>
+        <Header />
+        <BookmarkList />
+      </S.Container>
+    </RecoilRoot>
   );
 };
 
 export default SlideBar;
 
-export const toggleObservable = new BehaviorSubject<boolean>(false);
+export const toggleObservable = new BehaviorSubject<boolean>(true);
 
 export const toggle = () => toggleObservable.next(!toggleObservable.getValue());
