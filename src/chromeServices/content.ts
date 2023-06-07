@@ -1,6 +1,6 @@
 import { createElement } from 'react';
 import ReactDOM from 'react-dom';
-import SlideBar, { toggle } from '../components/SlideBar';
+import SlideBar, { toggle } from '../components/SlideBar/SlideBar';
 import { ToggleMessage } from '../types';
 
 const ID = 'slide_bar_root';

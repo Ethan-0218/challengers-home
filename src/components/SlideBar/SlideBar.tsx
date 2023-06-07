@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BehaviorSubject } from 'rxjs';
-import { BAR_WIDTH } from '../constants/slidebar.constants';
+import { BAR_WIDTH } from '../../constants/slidebar.constants';
 
 const SlideBar = () => {
   const [show, setShow] = useState(false);
