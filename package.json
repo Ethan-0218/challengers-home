@@ -25,7 +25,8 @@
     "start": "craco start",
     "build": "INLINE_RUNTIME_CHUNK=false craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "icons": "npx @svgr/cli -d ./src/components/Icon/icons ./public/icons --config-file ./public/icons/svgr-config.json --index-template ./public/icons/index-template.js"
   },
   "browserslist": {
     "production": [
