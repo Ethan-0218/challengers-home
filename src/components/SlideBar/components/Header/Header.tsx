@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './Header.styles';
 import Icon from '../../../Icon/Icon';
 import Clickable from '../../../Clickable/Clickable';
-import ToggleObserver from '../../../../lib/ToggleObserver';
+import ToggleObserver from '@lib/ToggleObserver';
 
 const Header = () => {
   const handleClickModify = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTestStore } from '../../../../store/test.store';
+import { useTestStore } from '@store/test.store';
 
 const BookmarkList = () => {
   const count = useTestStore((state) => state.count);

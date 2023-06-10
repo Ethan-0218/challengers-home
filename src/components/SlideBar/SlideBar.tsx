@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import ToggleObserver from '../../lib/ToggleObserver';
+import ToggleObserver from '@lib/ToggleObserver';
 import * as S from './SlideBar.styles';
 import BookmarkList from './components/BookmarkList/BookmarkList';
 import Header from './components/Header/Header';

@@ -1,4 +1,5 @@
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const path = require('path');
 
 module.exports = {
   webpack: {
@@ -30,6 +31,13 @@ module.exports = {
           excludeAliases: ['console'],
         }),
       ],
+    },
+    alias: {
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@store': path.resolve(__dirname, 'src/store'),
+      '@lib': path.resolve(__dirname, 'src/lib'),
+      '@types': path.resolve(__dirname, 'src/types'),
     },
   },
   bable: {

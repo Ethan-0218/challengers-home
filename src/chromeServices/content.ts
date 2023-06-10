@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import ReactDOM from 'react-dom';
 import SlideBar from '../components/SlideBar/SlideBar';
 import { ToggleMessage } from '../types';
-import ToggleObserver from '../lib/ToggleObserver';
+import ToggleObserver from '@lib/ToggleObserver';
 
 const ID = 'slide_bar_root';
 

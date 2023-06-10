@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
-import SlideBar from './components/SlideBar/SlideBar';
-import ToggleObserver from './lib/ToggleObserver';
+import { SlideBar } from '@components';
+import ToggleObserver from '@lib/ToggleObserver';
 import logo from './logo.svg';
 
 function App() {
