@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react';
-import { RecoilRoot } from 'recoil';
 import ToggleObserver from '../../lib/ToggleObserver';
 import * as S from './SlideBar.styles';
 import BookmarkList from './components/BookmarkList/BookmarkList';
@@ -19,13 +18,11 @@ const SlideBar: FC = () => {
   }, []);
 
   return (
-    <RecoilRoot>
-      <S.Container show={show} height={height}>
-        <Header />
-        <SearchBar />
-        <BookmarkList />
-      </S.Container>
-    </RecoilRoot>
+    <S.Container show={show} height={height}>
+      <Header />
+      <SearchBar />
+      <BookmarkList />
+    </S.Container>
   );
 };
 
