@@ -1,7 +1,8 @@
 import { createElement } from 'react';
 import ReactDOM from 'react-dom';
-import SlideBar, { toggle } from '../components/SlideBar/SlideBar';
+import SlideBar from '../components/SlideBar/SlideBar';
 import { ToggleMessage } from '../types';
+import ToggleObserver from '../lib/ToggleObserver';
 
 const ID = 'slide_bar_root';
 
@@ -20,9 +21,9 @@ chrome.runtime.onMessage.addListener(
       div.style.zIndex = '999';
       ReactDOM.render(createElement(SlideBar, null), div);
       document.body.appendChild(div);
-      setTimeout(toggle, 100);
+      setTimeout(ToggleObserver.toggle, 100);
     } else {
-      toggle();
+      ToggleObserver.toggle();
     }
   },
 );

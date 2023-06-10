@@ -11,13 +11,13 @@ export const Container = styled.div`
 export const Left = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
 `;
 
 export const Profile = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 43px;
+  height: 43px;
+  border-radius: 22px;
   object-fit: cover;
 `;
 

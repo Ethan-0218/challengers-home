@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { BehaviorSubject } from 'rxjs';
-import * as S from './SlideBar.styles';
+import { FC, useEffect, useState } from 'react';
 import { RecoilRoot } from 'recoil';
+import ToggleObserver from '../../lib/ToggleObserver';
+import * as S from './SlideBar.styles';
 import BookmarkList from './components/BookmarkList/BookmarkList';
 import Header from './components/Header/Header';
+import SearchBar from './components/SearchBar/SearchBar';
 
-const SlideBar = () => {
+const SlideBar: FC = () => {
   const [show, setShow] = useState(false);
   const [height, setHeiht] = useState(window.innerHeight);
 
@@ -13,7 +14,7 @@ const SlideBar = () => {
     window.addEventListener('resize', () => {
       setHeiht(window.innerHeight);
     });
-    const s = toggleObservable.subscribe(setShow);
+    const s = ToggleObserver.subscribe(setShow);
     return () => s.unsubscribe();
   }, []);
 
@@ -21,6 +22,7 @@ const SlideBar = () => {
     <RecoilRoot>
       <S.Container show={show} height={height}>
         <Header />
+        <SearchBar />
         <BookmarkList />
       </S.Container>
     </RecoilRoot>
@@ -28,7 +30,3 @@ const SlideBar = () => {
 };
 
 export default SlideBar;
-
-export const toggleObservable = new BehaviorSubject<boolean>(true);
-
-export const toggle = () => toggleObservable.next(!toggleObservable.getValue());

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
-import SlideBar, { toggle } from './components/SlideBar/SlideBar';
+import SlideBar from './components/SlideBar/SlideBar';
+import ToggleObserver from './lib/ToggleObserver';
+import logo from './logo.svg';
 
 function App() {
   useEffect(() => {
-    toggle();
+    ToggleObserver.open();
   }, []);
 
   return (
