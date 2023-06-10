@@ -2,9 +2,9 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 module.exports = {
   webpack: {
-    configure: (webpackConfig, { env, paths }) => {
+    configure: (config, { env, paths }) => {
       return {
-        ...webpackConfig,
+        ...config,
         entry: {
           main: [
             env === 'development' &&
@@ -15,11 +15,11 @@ module.exports = {
           background: './src/chromeServices/background.ts',
         },
         output: {
-          ...webpackConfig.output,
+          ...config.output,
           filename: 'static/js/[name].js',
         },
         optimization: {
-          ...webpackConfig.optimization,
+          ...config.optimization,
           runtimeChunk: false,
         },
       };
