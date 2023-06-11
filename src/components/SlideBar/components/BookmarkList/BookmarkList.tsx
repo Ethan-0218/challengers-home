@@ -1,26 +1,15 @@
-import React from 'react';
-import { useTestStore } from '@store/test.store';
+import { useBookmarkStore } from '@store/bookmark.store';
+import BookmarkDirectory from '../BookmarkDirectory/BookmarkDirectory';
 
 const BookmarkList = () => {
-  const count = useTestStore((state) => state.count);
+  const directories = useBookmarkStore((s) => s.directories);
   return (
-    <div>
-      {count} <Increase />
-      <Clear />
-    </div>
+    <>
+      {directories.map((d) => (
+        <BookmarkDirectory item={d} key={d.id} />
+      ))}
+    </>
   );
 };
 
 export default BookmarkList;
-
-const Increase = () => {
-  const inc = useTestStore((s) => s.increase);
-
-  return <button onClick={inc}>increase</button>;
-};
-
-const Clear = () => {
-  const clear = useTestStore((s) => s.clear);
-
-  return <button onClick={clear}>clear</button>;
-};

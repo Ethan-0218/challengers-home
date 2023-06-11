@@ -38,6 +38,7 @@ module.exports = {
       '@store': path.resolve(__dirname, 'src/store'),
       '@lib': path.resolve(__dirname, 'src/lib'),
       '@types': path.resolve(__dirname, 'src/types'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
     },
   },
   bable: {
