@@ -40,7 +40,18 @@ export const useBookmarkStore = create<BookmarkState>()(
     }),
     {
       name: 'bookmark-storage',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => ({
+        getItem: async (name: string) => {
+          const res = await chrome.storage.local.get([name]);
+          return res[name];
+        },
+        setItem: (name: string, value: string) => {
+          return chrome.storage.local.set({ [name]: value });
+        },
+        removeItem: (name: string) => {
+          return chrome.storage.local.remove([name]);
+        },
+      })),
     },
   ),
 );
