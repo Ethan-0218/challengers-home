@@ -1,7 +1,6 @@
 export type Directory = {
   id: number;
   name: string;
-  description: string;
   emoji: string;
   isShared: boolean;
   bookmarks: Item[];

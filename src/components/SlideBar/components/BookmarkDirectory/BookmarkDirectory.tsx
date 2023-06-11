@@ -9,7 +9,7 @@ type Props = {
 };
 
 const BookmarkDirectory: FC<Props> = ({ item }) => {
-  const { emoji, name, description, bookmarks } = item;
+  const { emoji, name, bookmarks } = item;
 
   const [isOpened, setIsOpened] = useState(true);
 
