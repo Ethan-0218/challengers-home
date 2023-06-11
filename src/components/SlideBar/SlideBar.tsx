@@ -1,19 +1,18 @@
 import ToggleObserver from '@lib/ToggleObserver';
-import { FC, createElement, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import CreateDirectoryPopup from '../CreateDirectoryPopup/CreateDirectoryPopup';
+import { FC, useEffect, useState } from 'react';
 import * as S from './SlideBar.styles';
 import BookmarkList from './components/BookmarkList/BookmarkList';
 import Header from './components/Header/Header';
 import SearchBar from './components/SearchBar/SearchBar';
+import AddBookmarkButton from './components/AddBookmarkButton/AddBookmarkButton';
 
 const SlideBar: FC = () => {
   const [show, setShow] = useState(false);
-  const [height, setHeiht] = useState(window.innerHeight);
+  const [height, setHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      setHeiht(window.innerHeight);
+      setHeight(window.innerHeight);
     });
     const s = ToggleObserver.subscribe(setShow);
     return () => s.unsubscribe();
@@ -24,7 +23,7 @@ const SlideBar: FC = () => {
       <Header />
       <SearchBar />
       <BookmarkList />
-      <button onClick={CreateDirectoryPopup.show}>북마크 추가</button>
+      <AddBookmarkButton />
     </S.Container>
   );
 };

@@ -13,9 +13,11 @@ const BookmarkDirectory: FC<Props> = ({ item }) => {
 
   const [isOpened, setIsOpened] = useState(true);
 
+  const handleClickHeader = () => setIsOpened((v) => !v);
+
   return (
     <S.Container>
-      <S.Header>
+      <S.Header onClick={handleClickHeader}>
         <Icon name="icon_down" size={22} />
         <S.Emoji>{emoji}</S.Emoji>
         <S.Name>{name}</S.Name>

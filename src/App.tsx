@@ -4,6 +4,7 @@ import { SlideBar } from '@components';
 import ToggleObserver from '@lib/ToggleObserver';
 import logo from './logo.svg';
 import CreateDirectoryPopup from './components/CreateDirectoryPopup/CreateDirectoryPopup';
+import CreateBookmarkPopup from './components/CreateBookmarkPopup/CreateBookmarkPopup';
 
 function App() {
   useEffect(() => {
@@ -27,9 +28,10 @@ function App() {
         </a>
       </header>
       <SlideBar />
-      <div style={{ position: 'fixed', top: 0, width: '100%', height: '100%' }}>
-        <CreateDirectoryPopup />
-      </div>
+      {/* <div style={{ position: 'fixed', top: 0, width: '100%', height: '100%' }}> */}
+      {/* <CreateDirectoryPopup /> */}
+      {/* <CreateBookmarkPopup /> */}
+      {/* </div> */}
     </div>
   );
 }

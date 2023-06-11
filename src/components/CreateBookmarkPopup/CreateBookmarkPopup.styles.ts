@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const PopupContainer = styled.div`
   width: 500px;
-  height: 326px;
+  height: 451px;
   background: #ffffff;
   box-shadow: 0px 12px 23px rgba(0, 0, 0, 0.1);
   border-radius: 20px;

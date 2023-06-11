@@ -5,6 +5,10 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 type BookmarkState = {
   directories: Bookmark.Directory[];
   createDirectory: (dir: Pick<Bookmark.Directory, 'name' | 'emoji'>) => void;
+  createBookmark: (
+    bookmark: Pick<Bookmark.Item, 'name' | 'description' | 'url'>,
+    directoryId: number,
+  ) => void;
 };
 
 const TEST_BOOKMARK: Bookmark.Item = {
@@ -36,6 +40,24 @@ export const useBookmarkStore = create<BookmarkState>()(
             bookmarks: [],
           };
           return { directories: [...directories, directory] };
+        }),
+      createBookmark: (bookmark, directoryId) =>
+        set(({ directories }) => {
+          const id = directories.flatMap((d) => d.bookmarks).length + 1;
+          const newBookmark: Bookmark.Item = {
+            id,
+            ...bookmark,
+          };
+          return {
+            directories: directories.map((d) =>
+              d.id !== directoryId
+                ? d
+                : {
+                    ...d,
+                    bookmarks: [...d.bookmarks, newBookmark],
+                  },
+            ),
+          };
         }),
     }),
     {
