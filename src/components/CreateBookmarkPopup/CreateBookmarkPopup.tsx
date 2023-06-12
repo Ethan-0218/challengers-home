@@ -12,8 +12,8 @@ const CreateBookmarkPopup = () => {
   const [data, setData] = useState<
     Pick<Bookmark.Item, 'name' | 'url' | 'description'>
   >({
-    name: '',
-    url: '',
+    name: window.document.title,
+    url: window.location.href,
     description: '',
   });
   const [directoryId, setDirectoryId] = useState<number>();
