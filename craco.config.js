@@ -8,8 +8,8 @@ module.exports = {
         ...config,
         entry: {
           main: [
-            env === 'development' &&
-              require.resolve('react-dev-utils/webpackHotDevClient'),
+            // env === 'development' &&
+            //   require.resolve('react-dev-utils/webpackHotDevClient'),
             paths.appIndexJs,
           ].filter(Boolean),
           content: './src/chromeServices/content.ts',
@@ -43,5 +43,16 @@ module.exports = {
   },
   bable: {
     plugins: ['@emotion'],
+  },
+  devServer: (devServerConfig) => {
+    devServerConfig.watchFiles = [
+      'src/components/**/*',
+      'src/constants/**/*',
+      'src/store/**/*',
+      'src/lib/**/*',
+      'src/types/**/*',
+      'src/utils/**/*',
+    ];
+    return devServerConfig;
   },
 };
