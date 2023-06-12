@@ -13,7 +13,7 @@ const BookmarkItem: FC<Props> = ({ item }) => {
   const favicon = getFaviconUrl(url);
 
   const handleClick = () => {
-    alert('go to ' + url);
+    window.location.href = url;
   };
 
   return (
