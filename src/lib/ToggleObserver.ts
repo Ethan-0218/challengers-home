@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 
 class ToggleObserver {
-  private observable = new BehaviorSubject<boolean>(true);
+  private observable = new BehaviorSubject<boolean>(false);
 
   public toggle = () => this.observable.next(!this.observable.getValue());
 
