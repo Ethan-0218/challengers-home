@@ -39,6 +39,7 @@ module.exports = {
       '@lib': path.resolve(__dirname, 'src/lib'),
       '@types': path.resolve(__dirname, 'src/types'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
     },
   },
   bable: {
@@ -52,6 +53,7 @@ module.exports = {
       'src/lib/**/*',
       'src/types/**/*',
       'src/utils/**/*',
+      'src/hooks/**/*',
     ];
     return devServerConfig;
   },
