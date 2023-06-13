@@ -14,6 +14,7 @@ import IconShare from './IconShare';
 import IconSmileFace from './IconSmileFace';
 import IconStarFilled from './IconStarFilled';
 import IconStarStroke from './IconStarStroke';
+import IconUp from './IconUp';
 import IconUsers from './IconUsers';
 
 export const ICONS = {
@@ -33,6 +34,7 @@ export const ICONS = {
   icon_smile_face: IconSmileFace,
   icon_star_filled: IconStarFilled,
   icon_star_stroke: IconStarStroke,
+  icon_up: IconUp,
   icon_users: IconUsers,
 };
 

@@ -18,7 +18,7 @@ const BookmarkDirectory: FC<Props> = ({ item }) => {
   return (
     <S.Container>
       <S.Header onClick={handleClickHeader}>
-        <Icon name="icon_down" size={22} />
+        <Icon name={`icon_${isOpened ? 'up' : 'down'}`} size={22} />
         <S.Emoji>{emoji}</S.Emoji>
         <S.Name>{name}</S.Name>
       </S.Header>

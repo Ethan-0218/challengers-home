@@ -10,6 +10,7 @@ export const ItemContainer = styled.div`
   height: 100%;
   padding: 0 10px;
   align-items: center;
+  justify-content: flex-start;
   cursor: pointer;
   gap: 6px;
   &:hover {
@@ -29,4 +30,10 @@ export const Name = styled.span`
   font-size: 16px;
   line-height: 19px;
   color: #363636;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
