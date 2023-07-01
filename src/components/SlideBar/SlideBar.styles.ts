@@ -14,4 +14,6 @@ export const Container = styled.div<{ show: boolean; height: number }>`
   overflow: hidden;
   background: #ffffff;
   box-shadow: -10px 0px 29px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
 `;

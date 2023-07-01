@@ -1,14 +1,16 @@
 import { useBookmarkStore } from '@store/bookmark.store';
-import BookmarkDirectory from '../BookmarkDirectory/BookmarkDirectory';
+import BookmarkFolder from '../BookmarkFolder/BookmarkFolder';
+import * as S from './BookmarkList.styles';
 
 const BookmarkList = () => {
-  const directories = useBookmarkStore((s) => s.directories);
+  const bookmarks = useBookmarkStore((s) => s.bookmarks);
+
   return (
-    <>
-      {directories.map((d) => (
-        <BookmarkDirectory item={d} key={d.id} />
+    <S.Container>
+      {bookmarks.map((folder) => (
+        <BookmarkFolder key={folder.id} folder={folder} />
       ))}
-    </>
+    </S.Container>
   );
 };
 

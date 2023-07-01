@@ -1,14 +1,14 @@
-import { useSearchBookmarks } from '@hooks/search.hooks';
 import { useState } from 'react';
 import { InputChangeHandler } from '../../../../types/util.types';
 import Icon from '../../../Icon/Icon';
 import BookmarkItem from '../BookmarkItem/BookmarkItem';
 import * as S from './SearchBar.styles';
 import { useModeStore } from '@store/mode.store';
+import { Bookmark } from '@types';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const { bookmarks } = useSearchBookmarks(query);
+  const bookmarks: Bookmark.Item[] = [];
   const setMode = useModeStore((s) => s.setMode);
 
   const handleChange: InputChangeHandler = (e) => {

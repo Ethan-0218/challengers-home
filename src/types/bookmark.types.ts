@@ -6,9 +6,18 @@ export type Directory = {
   bookmarks: Item[];
 };
 
+export type Folder = {
+  type: 'Folder';
+  id: string;
+  title: string;
+  emoji: string;
+  children?: (Folder | Item)[];
+};
+
 export type Item = {
-  id: number;
+  type: 'Item';
+  id: string;
+  title: string;
   url: string;
-  name: string;
   description: string;
 };

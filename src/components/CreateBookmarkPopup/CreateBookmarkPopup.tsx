@@ -10,9 +10,9 @@ import DirectorySelector from './components/DirectorySelector/DirectorySelector'
 
 const CreateBookmarkPopup = () => {
   const [data, setData] = useState<
-    Pick<Bookmark.Item, 'name' | 'url' | 'description'>
+    Pick<Bookmark.Item, 'title' | 'url' | 'description'>
   >({
-    name: window.document.title,
+    title: window.document.title,
     url: window.location.href,
     description: '',
   });
@@ -35,10 +35,10 @@ const CreateBookmarkPopup = () => {
           <Title />
           <TextInput
             label="이름"
-            key="name"
-            value={data.name}
+            key="title"
+            value={data.title}
             placeholder="ex 팀 데일리미팅"
-            onChangeText={(v) => handleChangeValue('name', v)}
+            onChangeText={(v) => handleChangeValue('title', v)}
           />
 
           <TextInput

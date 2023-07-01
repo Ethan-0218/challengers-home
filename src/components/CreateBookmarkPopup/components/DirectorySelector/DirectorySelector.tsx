@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
 import * as S from './DirectorySelector.styles';
-import { useBookmarkStore } from '@store/bookmark.store';
 import { Bookmark } from '@types';
 import { Font, Icon } from '@components';
 
@@ -10,7 +9,7 @@ type Props = {
 };
 
 const DirectorySelector: FC<Props> = ({ directoryId, setDirectoryId }) => {
-  const directories = useBookmarkStore((state) => state.directories);
+  const directories: Bookmark.Directory[] = [];
   const selected = directories.find((d) => d.id === directoryId);
 
   const [isOpen, setIsOpen] = useState(false);

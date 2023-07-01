@@ -1,5 +1,5 @@
 import { Bookmark } from '@types';
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import * as S from './BookmarkItem.styles';
 import { getFaviconUrl } from '@utils/common.utils';
 
@@ -8,19 +8,23 @@ type Props = {
 };
 
 const BookmarkItem: FC<Props> = ({ item }) => {
-  const { name, url, description } = item;
+  const { title, url, description } = item;
+  const [index, setIndex] = useState(0);
 
-  const favicon = getFaviconUrl(url);
+  const favicon = getFaviconUrl(url)[index];
 
   const handleClick = () => {
     window.location.href = url;
   };
 
+  if (!item.url.startsWith('http')) return <></>;
   return (
     <S.Container>
       <S.ItemContainer onClick={handleClick} title={description}>
-        <S.Favicon src={favicon} />
-        <S.Name>{name}</S.Name>
+        {favicon && (
+          <S.Favicon src={favicon} onError={() => setIndex((i) => i + 1)} />
+        )}
+        <S.Name>{title}</S.Name>
       </S.ItemContainer>
     </S.Container>
   );

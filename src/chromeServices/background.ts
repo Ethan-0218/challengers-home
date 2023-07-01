@@ -1,11 +1,17 @@
-import { ToggleMessage } from '../types';
+import { parseBookmarksTree } from '@utils/bookmark.utils';
+import { InitMessage, ToggleMessage } from '../types';
 
 const openSlideBar = async (tab?: chrome.tabs.Tab) => {
   if (!tab?.id) return;
 
-  await chrome.tabs.sendMessage(tab.id, {
-    type: 'TOGGLE',
-  } as ToggleMessage);
+  const initMessage: InitMessage = {
+    type: 'INIT',
+    bookmarks: parseBookmarksTree(await chrome.bookmarks.getTree()),
+  };
+  await chrome.tabs.sendMessage(tab.id, initMessage);
+
+  const toggleMessage: ToggleMessage = { type: 'TOGGLE' };
+  await chrome.tabs.sendMessage(tab.id, toggleMessage);
 };
 
 chrome.windows.onCreated.addListener(async (window) => {
@@ -16,6 +22,5 @@ chrome.windows.onCreated.addListener(async (window) => {
   });
 
   const tabs = await chrome.tabs.query({ active: true, windowId: window.id });
-  console.log(tabs);
   setTimeout(() => openSlideBar(tabs[0]), 300);
 });

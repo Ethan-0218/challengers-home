@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import * as S from './SaveButton.styles';
 import { Bookmark } from '@types';
-import { useBookmarkStore } from '@store/bookmark.store';
 import CreateDirectoryPopup from '../../CreateDirectoryPopup';
 
 type Props = {
@@ -9,11 +8,8 @@ type Props = {
 };
 
 const SaveButton: FC<Props> = ({ data }) => {
-  const createDirectory = useBookmarkStore((s) => s.createDirectory);
-
   const handleClick = async () => {
     if (!data.name) return alert('이름을 입력해주세요');
-    createDirectory(data);
     CreateDirectoryPopup.close();
   };
 

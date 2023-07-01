@@ -2,11 +2,14 @@ import ToggleObserver from '@lib/ToggleObserver';
 import { createElement } from 'react';
 import ReactDOM from 'react-dom';
 import SlideBar from '../components/SlideBar/SlideBar';
-import { Message } from '../types';
+import { Bookmark, Message } from '../types';
+import { useBookmarkStore } from '@store/bookmark.store';
 
 chrome.runtime.onMessage.addListener(
   (msg: Message, sender: chrome.runtime.MessageSender) => {
     switch (msg.type) {
+      case 'INIT':
+        return useBookmarkStore.getState().setBookmarks(msg.bookmarks);
       case 'TOGGLE':
         return toggleHandler();
     }
@@ -25,7 +28,7 @@ const toggleHandler = () => {
     div.style.width = '0px';
     div.style.height = '0px';
     div.style.zIndex = '999';
-    ReactDOM.render(createElement(SlideBar, null), div);
+    ReactDOM.render(createElement(SlideBar), div);
     document.body.appendChild(div);
     setTimeout(ToggleObserver.toggle, 100);
   } else {
