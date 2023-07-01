@@ -16,7 +16,7 @@
     "service_worker": "./static/js/background.js",
     "type": "module"
   },
-  "permissions": ["activeTab", "storage"],
+  "permissions": ["tabs", "activeTab", "storage", "bookmarks"],
   "icons": {
     "16": "logo192.png",
     "48": "logo192.png",

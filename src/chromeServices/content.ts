@@ -6,7 +6,6 @@ import { Message } from '../types';
 
 chrome.runtime.onMessage.addListener(
   (msg: Message, sender: chrome.runtime.MessageSender) => {
-    console.log({ msg });
     switch (msg.type) {
       case 'TOGGLE':
         return toggleHandler();
