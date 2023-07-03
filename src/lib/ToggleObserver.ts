@@ -3,6 +3,10 @@ import { BehaviorSubject } from 'rxjs';
 class ToggleObserver {
   private observable = new BehaviorSubject<boolean>(false);
 
+  get isOpened() {
+    return this.observable.getValue();
+  }
+
   public toggle = () => this.observable.next(!this.observable.getValue());
 
   public open = () => this.observable.next(true);

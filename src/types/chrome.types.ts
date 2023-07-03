@@ -9,8 +9,12 @@ export type InitMessage = {
   bookmarks: Bookmark.Folder[];
 };
 
+export type ChangeMessage = {
+  type: 'CHANGE';
+};
+
 export type ToggleMessageResponse = {
   isOpened: boolean;
 };
 
-export type Message = ToggleMessage | InitMessage;
+export type Message = ToggleMessage | InitMessage | ChangeMessage;

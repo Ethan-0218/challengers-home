@@ -1,15 +1,17 @@
 import ToggleObserver from '@lib/ToggleObserver';
+import { useBookmarkStore } from '@store/bookmark.store';
 import { createElement } from 'react';
 import ReactDOM from 'react-dom';
 import SlideBar from '../components/SlideBar/SlideBar';
-import { Bookmark, Message } from '../types';
-import { useBookmarkStore } from '@store/bookmark.store';
+import { Message } from '../types';
 
 chrome.runtime.onMessage.addListener(
   (msg: Message, sender: chrome.runtime.MessageSender) => {
     switch (msg.type) {
       case 'INIT':
         return useBookmarkStore.getState().setBookmarks(msg.bookmarks);
+      case 'CHANGE':
+        return ToggleObserver.isOpened && ToggleObserver.close();
       case 'TOGGLE':
         return toggleHandler();
     }
