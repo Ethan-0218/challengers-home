@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-top: 1px solid #e8e8e8;
 `;
 
-export const LabelItem = styled.div`
+export const LabelItem = styled.div<{ color: string }>`
   display: flex;
   width: 95px;
   height: 14px;
@@ -14,7 +14,7 @@ export const LabelItem = styled.div`
   justify-content: space-between;
   align-items: flex-start;
 
-  color: #878787;
+  color: ${({ color }) => color};
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
