@@ -1,7 +1,7 @@
-import { SlideBar } from '@components';
 import ToggleObserver from '@lib/ToggleObserver';
 import { useEffect, useState } from 'react';
 import Home from './components/Home/Home';
+import SlideBar from './components/SlideBar/SlideBar';
 
 function App() {
   const [{ width, height }, setSize] = useState({
@@ -22,11 +22,8 @@ function App() {
 
   return (
     <>
-      {/* <Home /> */}
-      {/* <iframe
-        src="https://teamchallengers.oopy.io/"
-        style={{ width, height }}
-      /> */}
+      <Home />
+      <SlideBar />
     </>
   );
 }

@@ -24,7 +24,7 @@ const SearchBar = () => {
 
   return (
     <S.Container>
-      <Icon name="icon_search" size={24} color="#4E4E4E" />
+      <Icon name="icon_search" size={20} color="#4E4E4E" />
       <S.Input ref={ref} placeholder="검색 또는 URL 입력" autoFocus />
     </S.Container>
   );

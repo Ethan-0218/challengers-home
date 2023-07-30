@@ -6,6 +6,7 @@ const SvgIconMenu = (props: SVGProps<SVGSVGElement>) => (
     width="100%"
     height="100%"
     fill="none"
+    viewBox="0 0 24 24"
     {...props}
   >
     <circle cx={12} cy={6} r={2} fill={props.color || `#000000`} />

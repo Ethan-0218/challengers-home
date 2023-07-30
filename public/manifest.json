@@ -18,8 +18,8 @@
   },
   "permissions": ["tabs", "activeTab", "storage", "bookmarks"],
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "16": "logox1.png",
+    "48": "logox2.png",
+    "128": "logox2.png"
   }
 }

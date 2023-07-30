@@ -12,13 +12,7 @@ const Icon: FC<Props> = ({ name, size, color = '#111111' }) => {
 
   if (!Svg) return <>no icon</>;
   return (
-    <Svg
-      width={size}
-      height={size}
-      color={color}
-      style={{ flexShrink: 0 }}
-      viewBox="0 0 24 24" // svgr cli 에서 자꾸 viewBox를 지워버려서 강제로 넣어둠
-    />
+    <Svg width={size} height={size} color={color} style={{ flexShrink: 0 }} />
   );
 };
 

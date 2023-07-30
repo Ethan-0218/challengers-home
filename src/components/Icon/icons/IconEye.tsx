@@ -6,6 +6,7 @@ const SvgIconEye = (props: SVGProps<SVGSVGElement>) => (
     width="100%"
     height="100%"
     fill="none"
+    viewBox="0 0 24 24"
     {...props}
   >
     <path

@@ -34,7 +34,10 @@ chrome.runtime.onInstalled.addListener(() => {
   chrome.tabs.onUpdated.addListener(onChangeTabs);
 
   chrome.windows.onCreated.addListener(async (window) => {
-    const tabs = await chrome.tabs.query({ active: true, windowId: window.id });
+    const tabs = await chrome.tabs.query({
+      active: true,
+      windowId: window.id,
+    });
     delayedOpenSlideBar(tabs[0]);
   });
 });

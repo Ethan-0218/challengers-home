@@ -1,3 +1,4 @@
+import IconChallengers from './IconChallengers';
 import IconClose from './IconClose';
 import IconDown from './IconDown';
 import IconEye from './IconEye';
@@ -18,6 +19,7 @@ import IconUp from './IconUp';
 import IconUsers from './IconUsers';
 
 export const ICONS = {
+  icon_challengers: IconChallengers,
   icon_close: IconClose,
   icon_down: IconDown,
   icon_eye: IconEye,
