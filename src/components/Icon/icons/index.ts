@@ -4,12 +4,14 @@ import IconDown from './IconDown';
 import IconEye from './IconEye';
 import IconEyeClosed from './IconEyeClosed';
 import IconFolderSimple from './IconFolderSimple';
+import IconLeft from './IconLeft';
 import IconList from './IconList';
 import IconMenu from './IconMenu';
 import IconMinus from './IconMinus';
 import IconNote from './IconNote';
 import IconPencil from './IconPencil';
 import IconPlus from './IconPlus';
+import IconRight from './IconRight';
 import IconSearch from './IconSearch';
 import IconShare from './IconShare';
 import IconSmileFace from './IconSmileFace';
@@ -25,12 +27,14 @@ export const ICONS = {
   icon_eye: IconEye,
   icon_eye_closed: IconEyeClosed,
   icon_folder_simple: IconFolderSimple,
+  icon_left: IconLeft,
   icon_list: IconList,
   icon_menu: IconMenu,
   icon_minus: IconMinus,
   icon_note: IconNote,
   icon_pencil: IconPencil,
   icon_plus: IconPlus,
+  icon_right: IconRight,
   icon_search: IconSearch,
   icon_share: IconShare,
   icon_smile_face: IconSmileFace,

@@ -1,0 +1,70 @@
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  src: url('./assets/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  src: url('./assets/Montserrat-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  src: url('./assets/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+  src: url('./assets/Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  src: url('./assets/Montserrat-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Pretendard;
+  font-weight: 400;
+  src: url('./assets/Pretendard-Regular.otf') format('otf');
+  src: url('./assets/Pretendard-Regular.woff') format('woff');
+  src: url('./assets/Pretendard-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Pretendard;
+  font-weight: 500;
+  src: url('./assets/Pretendard-Medium.otf') format('otf');
+  src: url('./assets/Pretendard-Medium.woff') format('woff');
+  src: url('./assets/Pretendard-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Pretendard;
+  font-weight: 600;
+  src: url('./assets/Pretendard-SemiBold.otf') format('otf');
+  src: url('./assets/Pretendard-SemiBold.woff') format('woff');
+  src: url('./assets/Pretendard-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Pretendard;
+  font-weight: 700;
+  src: url('./assets/Pretendard-Bold.otf') format('otf');
+  src: url('./assets/Pretendard-Bold.woff') format('woff');
+  src: url('./assets/Pretendard-Bold.woff2') format('woff2');
+}
+
+* {
+  font-family: Pretendard;
+}
