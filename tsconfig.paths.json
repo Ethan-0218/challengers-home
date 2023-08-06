@@ -8,7 +8,8 @@
       "@lib/*": ["./src/lib/*"],
       "@types": ["./src/types/index"],
       "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@queries/*": ["./src/queries/*"]
     }
   }
 }

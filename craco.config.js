@@ -44,6 +44,7 @@ module.exports = {
       '@types': path.resolve(__dirname, 'src/types'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@queries': path.resolve(__dirname, 'src/queries'),
     },
   },
   bable: {
@@ -58,6 +59,7 @@ module.exports = {
       'src/types/**/*',
       'src/utils/**/*',
       'src/hooks/**/*',
+      'src/queries/**/*',
     ];
     return devServerConfig;
   },

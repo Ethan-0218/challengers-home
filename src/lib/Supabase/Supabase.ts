@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Database } from './supabase.types';
-import { Meal } from '@types';
+import { Meal, Schedule } from '@types';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY || '';
@@ -23,4 +23,24 @@ export const getMealList = async (
     serveAt: new Date(d.serve_at),
   }));
   return { meals };
+};
+
+export const getScheduleList = async (
+  startAt: Date,
+  endAt: Date,
+): Promise<{ schedules: Schedule.Info[] }> => {
+  const { data } = await supabase
+    .from('schedule')
+    .select('*')
+    .gte('start_at', startAt.toISOString())
+    .lte('start_at', endAt.toISOString());
+  const schedules: Schedule.Info[] = (data || []).map((d) => ({
+    id: d.id,
+    title: d.title,
+    description: d.description,
+    startAt: new Date(d.start_at),
+    endAt: new Date(d.end_at),
+    type: d.type as Schedule.Type,
+  }));
+  return { schedules };
 };

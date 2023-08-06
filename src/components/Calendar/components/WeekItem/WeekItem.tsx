@@ -1,13 +1,6 @@
 import { useCalendarStore } from '@store/calendar.store';
-import {
-  addDays,
-  addWeeks,
-  format,
-  getWeekOfMonth,
-  startOfMonth,
-  startOfWeek,
-} from 'date-fns';
-import React, { FC } from 'react';
+import { getWeekDays } from '@utils/date.utils';
+import { FC } from 'react';
 import { DayItem } from '../DayItem/DayItem';
 import * as S from './WeekItem.styles';
 
@@ -24,12 +17,4 @@ export const WeekItem: FC<Props> = ({ nth }) => {
       ))}
     </S.Container>
   );
-};
-
-const getWeekDays = (currentMonth: Date, nth: number) => {
-  const firstDay = startOfWeek(addWeeks(startOfMonth(currentMonth), nth));
-  const weekDays = Array(7)
-    .fill(firstDay)
-    .map((d, i) => addDays(d, i));
-  return weekDays;
 };
