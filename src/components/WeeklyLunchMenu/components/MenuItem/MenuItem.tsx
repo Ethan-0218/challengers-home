@@ -3,11 +3,13 @@ import { format, isToday } from 'date-fns';
 import { FC } from 'react';
 import Font from '../../../Font/Font';
 import * as S from './MenuItem.styles';
+import { Meal } from '@types';
 
 type Props = {
   date: Date;
+  meal?: Meal.Info;
 };
-const MenuItem: FC<Props> = ({ date }) => {
+const MenuItem: FC<Props> = ({ date, meal }) => {
   const active = isToday(date);
 
   return (
@@ -34,11 +36,16 @@ const MenuItem: FC<Props> = ({ date }) => {
       <S.Divider />
 
       <S.MenuBox>
-        <Font size={14} weight={500} color="#5a5a5a">
-          메인메뉴 메인메뉴
+        <Font size={14} weight={active ? 600 : 500} color="#5a5a5a">
+          {meal?.main.join(' ') || '조금만'}
         </Font>
-        <Font size={14} weight={500} color="#878787">
-          그냥메뉴 그냥메뉴 그냥메뉴
+        <Font
+          size={14}
+          weight={active ? 600 : 500}
+          color="#878787"
+          style={{ wordBreak: 'keep-all' }}
+        >
+          {meal?.sub.join(' ') || '기다려주세요 😓'}
         </Font>
       </S.MenuBox>
     </S.Container>

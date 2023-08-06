@@ -1,7 +1,6 @@
 import ToggleObserver from '@lib/ToggleObserver';
 import { useEffect, useState } from 'react';
 import Home from './components/Home/Home';
-import SlideBar from './components/SlideBar/SlideBar';
 
 function App() {
   const [{ width, height }, setSize] = useState({

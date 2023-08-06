@@ -2,3 +2,4 @@ export * from './chrome.types';
 export * from './util.types';
 export * as Bookmark from './bookmark.types';
 export * from './mode.types';
+export * as Meal from './meal.types';
