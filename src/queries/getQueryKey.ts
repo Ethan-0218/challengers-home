@@ -1,5 +1,6 @@
 interface QueryList {
   GET_SCHEDULE_LIST: { startAt: string; endAt: string };
+  BOOKMARK_LIST: undefined;
 }
 
 const getQueryKey = <T extends keyof QueryList>(
