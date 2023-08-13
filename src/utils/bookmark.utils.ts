@@ -4,7 +4,7 @@ import { Bookmark } from '@types';
 export const convertNode2Item = (
   node: chrome.bookmarks.BookmarkTreeNode,
 ): Bookmark.Item => ({
-  type: 'Item',
+  type: 'item',
   id: node.id,
   title: node.title,
   url: node.url!,
@@ -14,7 +14,7 @@ export const convertNode2Item = (
 export const convertNode2Folder = (
   node: chrome.bookmarks.BookmarkTreeNode,
 ): Bookmark.Folder => ({
-  type: 'Folder',
+  type: 'folder',
   id: node.id,
   title: node.title,
   emoji: DEFAULT_FOLDER_EMOJI,
@@ -37,14 +37,14 @@ export const parseBookmarksTree = (
   const list =
     root.children?.flatMap((n) => n.children || []).map(search) || [];
   const folders = list.filter(
-    (item) => item.type === 'Folder',
+    (item) => item.type === 'folder',
   ) as Bookmark.Folder[];
   const etcFolder: Bookmark.Folder = {
-    type: 'Folder',
+    type: 'folder',
     id: '-1',
     title: '기타',
     emoji: DEFAULT_FOLDER_EMOJI,
-    children: list.filter((item) => item.type === 'Item'),
+    children: list.filter((item) => item.type === 'item'),
   };
   return [...folders, etcFolder];
 };

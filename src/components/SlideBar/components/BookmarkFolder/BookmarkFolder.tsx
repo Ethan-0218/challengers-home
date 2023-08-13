@@ -25,7 +25,7 @@ const BookmarkFolder: FC<Props> = ({ folder }) => {
       {isOpened && (
         <S.ListContainer>
           {children?.map((item) => {
-            if (item.type === 'Folder')
+            if (item.type === 'folder')
               return <BookmarkFolder key={item.id} folder={item} />;
             return <BookmarkItem key={item.id} item={item} />;
           })}

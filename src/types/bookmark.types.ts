@@ -1,3 +1,4 @@
+// deprecated
 export type Directory = {
   id: number;
   name: string;
@@ -7,7 +8,7 @@ export type Directory = {
 };
 
 export type Folder = {
-  type: 'Folder';
+  type: 'folder';
   id: string;
   title: string;
   emoji: string;
@@ -15,7 +16,7 @@ export type Folder = {
 };
 
 export type Item = {
-  type: 'Item';
+  type: 'item';
   id: string;
   title: string;
   url: string;

@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { Database } from './supabase.types';
-import { Meal, Schedule } from '@types';
+import { Bookmark, Meal, Schedule } from '@types';
+import { structBookmarkTree } from './supabase.utils';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY || '';
@@ -43,4 +44,9 @@ export const getScheduleList = async (
     type: d.type as Schedule.Type,
   }));
   return { schedules };
+};
+
+export const getBookmarkList = async (): Promise<Bookmark.Folder[]> => {
+  const { data } = await supabase.from('bookmark').select(`*`);
+  return data ? structBookmarkTree(data) : [];
 };

@@ -9,6 +9,36 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      bookmark: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: number
+          parent_id: number | null
+          title: string
+          type: string
+          value: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          parent_id?: number | null
+          title: string
+          type?: string
+          value: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: number
+          parent_id?: number | null
+          title?: string
+          type?: string
+          value?: string
+        }
+        Relationships: []
+      }
       meal_menu: {
         Row: {
           created_at: string | null
