@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   display: flex;
-  border-top: 1px solid #e8e8e8;
 `;
 
 export const LabelItem = styled.div<{ color: string }>`
@@ -23,7 +22,7 @@ export const LabelItem = styled.div<{ color: string }>`
   border-left: 1px solid #e8e8e8;
   background: #fff;
 
-  &:last-child {
-    border-right: 1px solid #e8e8e8;
+  &:first-child {
+    border-left: none;
   }
 `;

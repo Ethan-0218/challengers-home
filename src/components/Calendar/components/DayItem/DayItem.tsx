@@ -1,5 +1,5 @@
 import { useCalendarStore } from '@store/calendar.store';
-import { startOfMonth } from 'date-fns';
+import { isToday, startOfMonth } from 'date-fns';
 import { FC } from 'react';
 import * as S from './DayItem.style';
 import { useSchedulesOfDate } from '../../Calendar.hooks';
@@ -14,9 +14,14 @@ export const DayItem: FC<Props> = ({ date }) => {
 
   return (
     <S.Container>
-      <S.DateText color={getDateColor(date, currentMonth)}>
-        {date.getDate()}
-      </S.DateText>
+      <S.TextContainer color={getDateBgColor(date)}>
+        <S.DateText
+          color={getDateColor(date, currentMonth)}
+          weight={isToday(date) ? 700 : 500}
+        >
+          {date.getDate()}
+        </S.DateText>
+      </S.TextContainer>
       {schedules.map((s) => (
         <ScheduleLabel key={s.id} schedule={s} />
       ))}
@@ -24,7 +29,9 @@ export const DayItem: FC<Props> = ({ date }) => {
   );
 };
 
-const getDateColor = (date: Date, currentMonth: Date) => {
+const getDateColor = (date: Date, currentMonth: Date): string => {
+  if (isToday(date)) return 'white';
+
   const isInMonth =
     startOfMonth(date).getMonth() === startOfMonth(currentMonth).getMonth();
 
@@ -32,13 +39,20 @@ const getDateColor = (date: Date, currentMonth: Date) => {
     return '#ddd';
   }
 
+  // 토요일
   if (date.getDay() === 6) {
-    return 'blue';
+    return '#6DB9FF';
   }
 
+  // 일요일
   if (date.getDay() === 0) {
-    return 'red';
+    return '#FF7979';
   }
 
   return '#878787';
+};
+
+const getDateBgColor = (date: Date): string => {
+  if (isToday(date)) return '#FF9900';
+  return 'transparent';
 };

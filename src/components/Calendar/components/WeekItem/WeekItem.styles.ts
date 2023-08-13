@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-top: 1px solid #e8e8e8;
   background: #fff;
 
-  &:last-child {
-    border-bottom: 1px solid #e8e8e8;
+  &:first-child {
+    border-top: none;
   }
 `;

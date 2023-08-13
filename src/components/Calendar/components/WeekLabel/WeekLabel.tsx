@@ -15,10 +15,10 @@ export const WeekLabel = () => {
 
 const getLabelColor = (index: number) => {
   switch (index) {
-    case 0:
-      return 'red';
-    case 6:
-      return 'blue';
+    case 0: // 일요일
+      return '#878787';
+    case 6: // 월요일
+      return '#878787';
     default:
       return '#878787';
   }
