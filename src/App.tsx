@@ -2,6 +2,7 @@ import ToggleObserver from '@lib/ToggleObserver';
 import { useEffect, useState } from 'react';
 import Home from './components/Home/Home';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import PopupManager from './components/PopupManager/PopupManager';
 
 function App() {
   const [{ width, height }, setSize] = useState({
@@ -24,6 +25,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Home />
       {/* <SlideBar /> */}
+      <PopupManager.Portal />
     </QueryClientProvider>
   );
 }
