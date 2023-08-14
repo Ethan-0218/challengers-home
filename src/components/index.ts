@@ -5,3 +5,4 @@ export { default as Font } from './Font/Font';
 export { default as CreateBookmarkPopup } from './CreateBookmarkPopup/CreateBookmarkPopup';
 export { default as CreateDirectoryPopup } from './CreateDirectoryPopup/CreateDirectoryPopup';
 export { default as PopupManager } from './PopupManager/PopupManager';
+export { default as TextInput } from './TextInput/TextInput';

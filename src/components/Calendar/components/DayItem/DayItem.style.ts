@@ -32,4 +32,5 @@ export const TextContainer = styled.div<{ color?: string }>`
   justify-content: center;
   align-items: center;
   background-color: ${({ color }) => color};
+  cursor: pointer;
 `;

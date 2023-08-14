@@ -46,6 +46,41 @@ export const getScheduleList = async (
   return { schedules };
 };
 
+export const addSchedule = async (schedule: Omit<Schedule.Info, 'id'>) => {
+  const { error } = await supabase.from('schedule').insert({
+    title: schedule.title,
+    description: schedule.description,
+    start_at: schedule.startAt.toISOString(),
+    end_at: schedule.endAt.toISOString(),
+    type: schedule.type,
+  });
+
+  return !error;
+};
+
+export const editSchedule = async (
+  id: number,
+  schedule: Partial<Omit<Schedule.Info, 'id'>>,
+) => {
+  const { error } = await supabase
+    .from('schedule')
+    .update({
+      title: schedule.title,
+      description: schedule.description,
+      start_at: schedule.startAt?.toISOString(),
+      end_at: schedule.endAt?.toISOString(),
+      type: schedule.type,
+    })
+    .eq('id', id);
+
+  return !error;
+};
+
+export const deleteSchedule = async (id: number) => {
+  const { error } = await supabase.from('schedule').delete().eq('id', id);
+  return error ? null : id;
+};
+
 export const getBookmarkList = async (): Promise<Bookmark.Folder[]> => {
   const { data } = await supabase.from('bookmark').select(`*`);
   return data ? structBookmarkTree(data) : [];

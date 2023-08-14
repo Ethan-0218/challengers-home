@@ -17,7 +17,7 @@ export const Container = styled.div<{ width: number; height: number }>`
   ${({ width, height }) => css`
     width: ${width}px;
     height: ${height}px;
-    animation: ${ShowKeyframes} ${ANIM_DURATION}ms ease-in;
+    animation: ${ShowKeyframes} ${ANIM_DURATION}ms ease-in-out;
   `}
 `;
 
