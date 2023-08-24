@@ -18,12 +18,12 @@ const openSlideBar = async (tab?: chrome.tabs.Tab) => {
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.action.onClicked.addListener(openSlideBar);
+  chrome.tabs.onCreated.addListener(openSlideBar);
 });
 
-chrome.windows.onCreated.addListener(async (window) => {
-  if ((await chrome.windows.getAll()).length === 1) {
-    chrome.action.onClicked.addListener(openSlideBar);
-  }
+chrome.runtime.onStartup.addListener(async () => {
+  chrome.action.onClicked.addListener(openSlideBar);
+  chrome.tabs.onCreated.addListener(openSlideBar);
 });
 
 const getBookmarkList = async () => {
