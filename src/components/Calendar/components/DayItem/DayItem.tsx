@@ -36,9 +36,11 @@ export const DayItem: FC<Props> = ({ date }) => {
           {date.getDate()}
         </S.DateText>
       </S.TextContainer>
-      {schedules.map((s) => (
-        <ScheduleLabel key={s.id} schedule={s} />
-      ))}
+      <S.ScheduleContainer>
+        {schedules.map((s) => (
+          <ScheduleLabel key={s.id} schedule={s} />
+        ))}
+      </S.ScheduleContainer>
     </S.Container>
   );
 };

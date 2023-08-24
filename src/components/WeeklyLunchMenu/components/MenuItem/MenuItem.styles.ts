@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 export const Container = styled.div<{ active: boolean }>`
   display: flex;
   width: 292px;
-  padding: 20px;
+  height: 82px;
+  padding: 0 20px;
   gap: 12px;
   align-items: center;
 
@@ -35,6 +36,7 @@ export const MenuBox = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: center;
   height: 40px;
   gap: 4px;
 `;

@@ -34,3 +34,9 @@ export const TextContainer = styled.div<{ color?: string }>`
   background-color: ${({ color }) => color};
   cursor: pointer;
 `;
+
+export const ScheduleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;

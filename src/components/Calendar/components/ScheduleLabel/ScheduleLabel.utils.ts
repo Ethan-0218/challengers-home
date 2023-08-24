@@ -11,7 +11,7 @@ export const getColors = (
       };
     case 'PERSONAL':
       return {
-        fontColor: '##878787',
+        fontColor: '#878787',
         bgColor: '#F5F5F5',
       };
     case 'TEAM':
