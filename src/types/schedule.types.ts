@@ -1,4 +1,4 @@
-export type Type = 'EVENT' | 'TEAM' | 'PERSONAL';
+export type Type = 'MEETING' | 'VACATION' | 'BIRTHDAY' | 'ETC';
 
 export type Info = {
   id: number;

@@ -86,7 +86,7 @@ const ScheduleForm = (props: Props) => {
 const getInitialForm = (props: Props): Omit<Schedule.Info, 'id'> => {
   if (props.mode === 'add') {
     return {
-      type: 'EVENT',
+      type: 'MEETING',
       title: '',
       description: null,
       startAt: startOfDay(props.date),
