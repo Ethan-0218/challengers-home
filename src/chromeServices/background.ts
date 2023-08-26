@@ -16,15 +16,28 @@ const openSlideBar = async (tab?: chrome.tabs.Tab) => {
   await chrome.tabs.sendMessage(tab.id, toggleMessage);
 };
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.action.onClicked.addListener(openSlideBar);
-  chrome.tabs.onCreated.addListener(openSlideBar);
-});
+const heartbeat = () => {
+  setInterval(() => chrome.runtime.sendMessage({ type: 'VITAL' }), 4000);
+};
 
-chrome.runtime.onStartup.addListener(async () => {
+const handler = async () => {
   chrome.action.onClicked.addListener(openSlideBar);
-  chrome.tabs.onCreated.addListener(openSlideBar);
-});
+  chrome.tabs.onCreated.addListener((t) => {
+    chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+      if (
+        t.id === tabId &&
+        changeInfo.status === 'complete' &&
+        !!tab.url?.includes('chrome://')
+      ) {
+        openSlideBar(tab);
+      }
+    });
+  });
+  heartbeat();
+};
+
+chrome.runtime.onInstalled.addListener(handler);
+chrome.runtime.onStartup.addListener(handler);
 
 const getBookmarkList = async () => {
   const myBookmarkList = parseBookmarksTree(await chrome.bookmarks.getTree());
