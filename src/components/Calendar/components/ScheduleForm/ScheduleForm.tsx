@@ -16,6 +16,7 @@ import { getFirstAndLastDayInCalanderMonth } from '@utils/date.utils';
 import { useCalendarStore } from '@store/calendar.store';
 import { Supabase } from '@lib/Supabase';
 import PopupManager from '../../../PopupManager/PopupManager';
+import Clickable from '../../../Clickable/Clickable';
 
 type Props = ({ mode: 'add' } | { mode: 'edit'; schedule: Schedule.Info }) & {
   date: Date;
@@ -50,9 +51,29 @@ const ScheduleForm = (props: Props) => {
     }
   };
 
+  const handleDelete = async () => {
+    if (props.mode !== 'edit') return;
+    if (!confirm('일정을 삭제하시겠어요?')) return;
+    const deletedId = await Supabase.deleteSchedule(props.schedule.id);
+    if (deletedId === props.schedule.id) {
+      refetch();
+      PopupManager.close();
+    }
+  };
+
   return (
     <S.Container onClick={(e) => e.stopPropagation()}>
-      <Font size={20}>{format(props.date, 'M월 d일')}</Font>
+      <S.Row style={{ width: '100%', justifyContent: 'space-between' }}>
+        <Font size={20}>{format(props.date, 'M월 d일')}</Font>
+        {props.mode === 'edit' && !!props.schedule.id && (
+          <Clickable onClick={handleDelete}>
+            <Font size={16} color={'#7e7e7e'}>
+              {'일정 삭제'}
+            </Font>
+          </Clickable>
+        )}
+      </S.Row>
+
       <S.InputContainer>
         <TextInput
           label="제목"
