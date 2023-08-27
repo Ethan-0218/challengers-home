@@ -1,4 +1,4 @@
-import { Font, Icon } from '@components';
+import { CreateFolderPopup, Font, Icon } from '@components';
 import { Bookmark } from '@types';
 import { FC, useState } from 'react';
 import * as S from './FolderSelector.styles';
@@ -7,9 +7,15 @@ type Props = {
   folders: Bookmark.Folder[];
   folderId?: string;
   setFolderId: (id: string) => void;
+  setPopupVisible: (v: boolean) => void;
 };
 
-const FolderSelector: FC<Props> = ({ folders, folderId, setFolderId }) => {
+const FolderSelector: FC<Props> = ({
+  folders,
+  folderId,
+  setFolderId,
+  setPopupVisible,
+}) => {
   const selected = folders.find((f) => f.id === folderId);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +34,13 @@ const FolderSelector: FC<Props> = ({ folders, folderId, setFolderId }) => {
 
         <Icon name="icon_down" size={24} />
 
-        {isOpen && <FolderList folders={folders} onSelect={setFolderId} />}
+        {isOpen && (
+          <FolderList
+            folders={folders}
+            onSelect={setFolderId}
+            setPopupVisible={setPopupVisible}
+          />
+        )}
       </S.InputContainer>
     </S.Container>
   );
@@ -39,8 +51,22 @@ export default FolderSelector;
 type FolderListProps = {
   folders: Bookmark.Folder[];
   onSelect: (folderId: string) => void;
+  setPopupVisible: (v: boolean) => void;
 };
-const FolderList: FC<FolderListProps> = ({ folders, onSelect }) => {
+const FolderList: FC<FolderListProps> = ({
+  folders,
+  onSelect,
+  setPopupVisible,
+}) => {
+  const handleAddFolder = async () => {
+    setPopupVisible(false);
+    await new Promise<void>((resolve) =>
+      CreateFolderPopup.show({ onClose: resolve }),
+    );
+
+    setPopupVisible(true);
+  };
+
   return (
     <S.ListContainer>
       {folders.map((f) => (
@@ -48,7 +74,7 @@ const FolderList: FC<FolderListProps> = ({ folders, onSelect }) => {
           {f.emoji} {f.title}
         </S.ListItem>
       ))}
-      <S.ListItem>+ 새 폴더 만들기</S.ListItem>
+      <S.ListItem onClick={handleAddFolder}>+ 새 폴더 만들기</S.ListItem>
     </S.ListContainer>
   );
 };

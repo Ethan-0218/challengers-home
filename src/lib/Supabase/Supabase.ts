@@ -112,3 +112,14 @@ export const addBookmark = async (
   });
   return !error;
 };
+
+export const addBookmarkFolder = async (
+  folder: Pick<Bookmark.Folder, 'title' | 'emoji'>,
+) => {
+  const { error } = await supabase.from('bookmark').insert({
+    title: folder.title,
+    type: 'folder',
+    value: folder.emoji,
+  });
+  return !error;
+};

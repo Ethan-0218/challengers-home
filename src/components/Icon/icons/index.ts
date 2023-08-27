@@ -15,6 +15,7 @@ import IconRight from './IconRight';
 import IconSearch from './IconSearch';
 import IconShare from './IconShare';
 import IconSmileFace from './IconSmileFace';
+import IconSmily from './IconSmily';
 import IconStarFilled from './IconStarFilled';
 import IconStarStroke from './IconStarStroke';
 import IconUp from './IconUp';
@@ -38,6 +39,7 @@ export const ICONS = {
   icon_search: IconSearch,
   icon_share: IconShare,
   icon_smile_face: IconSmileFace,
+  icon_smily: IconSmily,
   icon_star_filled: IconStarFilled,
   icon_star_stroke: IconStarStroke,
   icon_up: IconUp,

@@ -21,6 +21,7 @@ const CreateBookmarkPopup = (props: Props) => {
     description: '',
   });
   const [folderId, setFolderId] = useState<string>();
+  const [visible, setVisible] = useState(true);
 
   const handleChangeValue = (key: string, value: string) =>
     setData((d) => ({ ...d, [key]: value }));
@@ -30,6 +31,7 @@ const CreateBookmarkPopup = (props: Props) => {
     CreateBookmarkPopup.close();
   };
 
+  if (!visible) return <></>;
   return (
     <S.Container onClick={handleClickBackground}>
       <S.PopupContainer onClick={(e) => e.stopPropagation()}>
@@ -65,6 +67,7 @@ const CreateBookmarkPopup = (props: Props) => {
             folders={props.folders}
             folderId={folderId}
             setFolderId={setFolderId}
+            setPopupVisible={setVisible}
           />
         </S.Column>
 

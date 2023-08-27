@@ -10,6 +10,7 @@ type Props = {
 
 const EmojiInput: FC<Props> = ({ emoji, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hover, setHover] = useState(false);
 
   const handleSelect = (emoji: EmojiClickData) => {
     onSelect(emoji.emoji);
@@ -20,7 +21,16 @@ const EmojiInput: FC<Props> = ({ emoji, onSelect }) => {
       {emoji ? (
         <S.EmojiText>{emoji}</S.EmojiText>
       ) : (
-        <Icon name="icon_smile_face" size={24} color="#878787" />
+        <div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          <Icon
+            name={hover ? 'icon_smily' : 'icon_smile_face'}
+            size={24}
+            color={hover ? '#FFB84F' : '#878787'}
+          />
+        </div>
       )}
 
       {isOpen && (
