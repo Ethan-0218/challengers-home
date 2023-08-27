@@ -1,7 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 import { Database } from './supabase.types';
 import { Bookmark, Meal, Schedule } from '@types';
-import { structBookmarkTree } from './supabase.utils';
+import {
+  isBookmarkFolder,
+  structBookmarkRow,
+  structBookmarkTree,
+} from './supabase.utils';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY || '';
@@ -84,4 +88,27 @@ export const deleteSchedule = async (id: number) => {
 export const getBookmarkList = async (): Promise<Bookmark.Folder[]> => {
   const { data } = await supabase.from('bookmark').select(`*`);
   return data ? structBookmarkTree(data) : [];
+};
+
+export const getBookmarkFolderList = async (): Promise<Bookmark.Folder[]> => {
+  const { data } = await supabase
+    .from('bookmark')
+    .select(`*`)
+    .eq('type', 'folder');
+  return (data || []).map(structBookmarkRow).filter(isBookmarkFolder);
+};
+
+export const addBookmark = async (
+  bookmark: Omit<Bookmark.Item, 'id' | 'type'>,
+  folderId: string,
+) => {
+  const { title, url, description } = bookmark;
+  const { error } = await supabase.from('bookmark').insert({
+    title,
+    type: 'item',
+    parent_id: Number(folderId),
+    value: url,
+    description,
+  });
+  return !error;
 };

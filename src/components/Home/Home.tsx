@@ -1,4 +1,5 @@
 import { Calendar } from '../Calendar/Calendar';
+import SlideBar from '../SlideBar/SlideBar';
 import WeeklyLunchMenu from '../WeeklyLunchMenu/WeeklyLunchMenu';
 import * as S from './Home.styles';
 import MainMessage from './components/MainMessage/MainMessage';
@@ -13,6 +14,7 @@ const Home = () => {
         <Calendar />
         <WeeklyLunchMenu />
       </S.Row>
+      {/* <SlideBar /> */}
     </S.Container>
   );
 };

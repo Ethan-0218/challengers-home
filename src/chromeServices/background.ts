@@ -1,5 +1,5 @@
 import { parseBookmarksTree } from '@utils/bookmark.utils';
-import { InitMessage, ToggleMessage } from '../types';
+import { Bookmark, InitMessage, ToggleMessage } from '../types';
 import { Supabase } from '@lib/Supabase';
 import { format } from 'date-fns';
 
@@ -40,7 +40,7 @@ chrome.runtime.onInstalled.addListener(handler);
 chrome.runtime.onStartup.addListener(handler);
 
 const getBookmarkList = async () => {
-  const myBookmarkList = parseBookmarksTree(await chrome.bookmarks.getTree());
+  const myBookmarkList: Bookmark.Folder[] = []; // parseBookmarksTree(await chrome.bookmarks.getTree());
   const { BOOKMARK_LIST, BOOKMARK_LIST_UPDATE_AT } =
     await chrome.storage.local.get('BOOKMARK_LIST');
   if (

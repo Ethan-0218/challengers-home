@@ -1,14 +1,18 @@
+import { Bookmark } from '@types';
 import React, { createElement, useState } from 'react';
 import ReactDOM from 'react-dom';
 import * as S from './CreateBookmarkPopup.styles';
-import Title from './components/Title/Title';
-import TextInput from './components/TextInput/TextInput';
-import { Bookmark } from '@types';
 import CancelButton from './components/CancelButton/CancelButton';
+import FolderSelector from './components/FolderSelector/FolderSelector';
 import SaveButton from './components/SaveButton/SaveButton';
-import DirectorySelector from './components/DirectorySelector/DirectorySelector';
+import TextInput from './components/TextInput/TextInput';
+import Title from './components/Title/Title';
 
-const CreateBookmarkPopup = () => {
+type Props = {
+  folders: Bookmark.Folder[];
+};
+
+const CreateBookmarkPopup = (props: Props) => {
   const [data, setData] = useState<
     Pick<Bookmark.Item, 'title' | 'url' | 'description'>
   >({
@@ -16,7 +20,7 @@ const CreateBookmarkPopup = () => {
     url: window.location.href,
     description: '',
   });
-  const [directoryId, setDirectoryId] = useState<number>();
+  const [folderId, setFolderId] = useState<string>();
 
   const handleChangeValue = (key: string, value: string) =>
     setData((d) => ({ ...d, [key]: value }));
@@ -57,15 +61,16 @@ const CreateBookmarkPopup = () => {
             onChangeText={(v) => handleChangeValue('description', v)}
           />
 
-          <DirectorySelector
-            directoryId={directoryId}
-            setDirectoryId={setDirectoryId}
+          <FolderSelector
+            folders={props.folders}
+            folderId={folderId}
+            setFolderId={setFolderId}
           />
         </S.Column>
 
         <S.Row style={{ gap: 16 }}>
           <CancelButton onClick={CreateBookmarkPopup.close} />
-          <SaveButton data={data} directoryId={directoryId} />
+          <SaveButton data={data} folderId={folderId} />
         </S.Row>
       </S.PopupContainer>
     </S.Container>
@@ -76,7 +81,7 @@ export default CreateBookmarkPopup;
 
 const ID = 'create-bookmark-popup';
 
-CreateBookmarkPopup.show = () => {
+CreateBookmarkPopup.show = (props: Props) => {
   const isRendered = !!document.getElementById(ID);
   if (isRendered) return;
   const div = document.createElement('div');
@@ -87,7 +92,7 @@ CreateBookmarkPopup.show = () => {
   div.style.height = `${window.innerHeight}px`;
   div.style.background = 'transparent';
   div.style.zIndex = '999';
-  ReactDOM.render(createElement(CreateBookmarkPopup, null), div);
+  ReactDOM.render(createElement(CreateBookmarkPopup, props), div);
   document.body.appendChild(div);
 };
 

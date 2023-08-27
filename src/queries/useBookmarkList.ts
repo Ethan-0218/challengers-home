@@ -9,3 +9,14 @@ export const useBookmarkList = () => {
     refetchOnMount: false,
   });
 };
+
+export const useBookmarkFolderList = () => {
+  return useQuery(
+    getQueryKey('BOOKMARK_FOLDER_LIST'),
+    Supabase.getBookmarkFolderList,
+    {
+      staleTime: millisecondsInHour * 24,
+      refetchOnMount: false,
+    },
+  );
+};

@@ -2,8 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   width: 100%;
-  padding: 10px 20px;
-  margin-top: 13px;
+  padding: 20px;
   box-sizing: border-box;
 `;
 
@@ -16,4 +15,5 @@ export const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  gap: 4px;
 `;
