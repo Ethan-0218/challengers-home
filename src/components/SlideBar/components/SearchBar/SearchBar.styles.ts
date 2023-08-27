@@ -24,3 +24,10 @@ export const Input = styled.input`
   height: 19px;
   background: transparent;
 `;
+
+export const NoResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+`;

@@ -1,14 +1,19 @@
+import { useBookmarkStore } from '@store/bookmark.store';
+import { useModeStore } from '@store/mode.store';
+import { searchBookmark } from '@utils/bookmark.utils';
 import { useState } from 'react';
 import { InputChangeHandler } from '../../../../types/util.types';
+import Font from '../../../Font/Font';
 import Icon from '../../../Icon/Icon';
 import BookmarkItem from '../BookmarkItem/BookmarkItem';
 import * as S from './SearchBar.styles';
-import { useModeStore } from '@store/mode.store';
-import { Bookmark } from '@types';
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const bookmarks: Bookmark.Item[] = [];
+  const { bookmarks } = useBookmarkStore();
+
+  const result = searchBookmark(bookmarks, query);
+
   const setMode = useModeStore((s) => s.setMode);
 
   const handleChange: InputChangeHandler = (e) => {
@@ -26,10 +31,15 @@ const SearchBar = () => {
         </S.InputContainer>
       </S.Container>
       {!!query &&
-        (bookmarks.length ? (
-          bookmarks.map((b) => <BookmarkItem item={b} key={b.id} />)
+        (result.length ? (
+          result.map((b) => <BookmarkItem item={b} key={b.id} />)
         ) : (
-          <div style={{ padding: '0 32px' }}>검색 결과가 없어요...</div>
+          <S.NoResultContainer>
+            <Icon name="emoji_glassman" size={26} />
+            <Font size={16} color="#363636">
+              검색 결과가 없어요
+            </Font>
+          </S.NoResultContainer>
         ))}
     </>
   );

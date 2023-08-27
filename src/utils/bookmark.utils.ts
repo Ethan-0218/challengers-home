@@ -48,3 +48,29 @@ export const parseBookmarksTree = (
   };
   return [...folders, etcFolder];
 };
+
+export const searchBookmark = (
+  folders: Bookmark.Folder[],
+  query: string,
+): Bookmark.Item[] => {
+  const searchFolder = (
+    folder: Bookmark.Folder,
+    query: string,
+  ): Bookmark.Item[] => {
+    const result: Bookmark.Item[] = [];
+    for (const item of folder.children || []) {
+      switch (item.type) {
+        case 'folder':
+          result.push(...searchFolder(item, query));
+          break;
+        case 'item':
+          if (item.description.includes(query) || item.title.includes(query)) {
+            result.push(item);
+          }
+      }
+    }
+    return result;
+  };
+
+  return folders.flatMap((f) => searchFolder(f, query));
+};
