@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Database } from './supabase.types';
-import { Bookmark, Meal, Schedule } from '@types';
+import { Bookmark, MainMessage, Meal, Schedule } from '@types';
 import {
   isBookmarkFolder,
   structBookmarkRow,
@@ -120,6 +120,29 @@ export const addBookmarkFolder = async (
     title: folder.title,
     type: 'folder',
     value: folder.emoji,
+  });
+  return !error;
+};
+
+export const getMainMessage = async (): Promise<MainMessage.Info | null> => {
+  const { data } = await supabase
+    .from('main_message')
+    .select('*')
+    .order('id', { ascending: false })
+    .limit(1);
+  const m = data && data[0];
+  if (!m) return null;
+  return {
+    id: m.id,
+    createdAt: new Date(m.created_at),
+    text: m.text,
+    userId: m.user_id,
+  };
+};
+
+export const addMainMessage = async (m: Pick<MainMessage.Info, 'text'>) => {
+  const { error } = await supabase.from('main_message').insert({
+    text: m.text,
   });
   return !error;
 };

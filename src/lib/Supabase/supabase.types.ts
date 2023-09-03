@@ -39,6 +39,27 @@ export interface Database {
         }
         Relationships: []
       }
+      main_message: {
+        Row: {
+          created_at: string
+          id: number
+          text: string
+          user_id: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          text: string
+          user_id?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          text?: string
+          user_id?: number
+        }
+        Relationships: []
+      }
       meal_menu: {
         Row: {
           created_at: string | null

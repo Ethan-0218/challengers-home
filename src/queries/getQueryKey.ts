@@ -2,6 +2,7 @@ interface QueryList {
   GET_SCHEDULE_LIST: { startAt: string; endAt: string };
   BOOKMARK_LIST: undefined;
   BOOKMARK_FOLDER_LIST: undefined;
+  MAIN_MESSAGE: undefined;
 }
 
 const getQueryKey = <T extends keyof QueryList>(
