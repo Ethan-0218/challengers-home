@@ -6,4 +6,5 @@ export const Container = styled.div<{ bg: string }>`
   border-radius: 4px;
   background-color: ${({ bg }) => bg};
   cursor: pointer;
+  position: relative;
 `;

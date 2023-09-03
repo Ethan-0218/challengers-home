@@ -5,7 +5,6 @@ import * as S from './DayItem.style';
 import { useSchedulesOfDate } from '../../Calendar.hooks';
 import ScheduleLabel from '../ScheduleLabel/ScheduleLabel';
 import PopupManager from '../../../PopupManager/PopupManager';
-import { Supabase } from '@lib/Supabase';
 import ScheduleForm from '../ScheduleForm/ScheduleForm';
 
 type Props = {

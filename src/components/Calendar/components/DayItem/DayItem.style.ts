@@ -11,6 +11,7 @@ export const Container = styled.div`
   align-items: flex-start;
   border-left: 1px solid #e8e8e8;
   background: #fff;
+  overflow-x: visible;
   &:first-child {
     border-left: none;
   }
@@ -38,5 +39,13 @@ export const TextContainer = styled.div<{ color?: string }>`
 export const ScheduleContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 2px;
+  flex: 1;
+  width: 89px;
+
+  overflow-y: auto;
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 `;
