@@ -7,6 +7,7 @@ import { Bookmark } from '@types';
 import NameInput from './components/NameInput/NameInput';
 import CancelButton from './components/CancelButton/CancelButton';
 import SaveButton from './components/SaveButton/SaveButton';
+import Font from '../Font/Font';
 
 type Props = {
   onClose?: () => void;
@@ -40,6 +41,22 @@ const CreateFolderPopup = ({ onClose }: Props) => {
           <S.Row style={{ width: '100%', gap: 4, marginTop: 20 }}>
             <EmojiInput emoji={data.emoji} onSelect={handleSelectEmoji} />
             <NameInput name={data.title} onChangeText={handleChangeName} />
+          </S.Row>
+          <S.Row style={{ gap: 4, marginTop: 14 }}>
+            <Font size={16} color="#222" weight={600}>
+              🎨 디자인
+            </Font>
+            <Font size={16} color="#363636" weight={500}>
+              - 게티 이미지 뱅크
+            </Font>
+          </S.Row>
+          <S.Row style={{ gap: 4, marginTop: 14 }}>
+            <Font size={16} color="#222" weight={600}>
+              🏃🏻‍♀️ 랜선대회
+            </Font>
+            <Font size={16} color="#363636" weight={500}>
+              - 랜선대회 운영안
+            </Font>
           </S.Row>
         </S.Column>
 
