@@ -6,6 +6,7 @@
     "@craco/craco": "^7.1.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@supabase/supabase-js": "^2.31.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -13,19 +14,24 @@
     "@types/node": "^16.18.34",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
+    "date-fns": "^2.30.0",
+    "emoji-picker-react": "^4.4.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-scripts": "5.0.1",
-    "recoil": "^0.7.7",
     "rxjs": "^7.8.1",
     "typescript": "5.0.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.3.8"
   },
   "scripts": {
     "start": "craco start",
-    "build": "INLINE_RUNTIME_CHUNK=false craco build",
+    "build": "INLINE_RUNTIME_CHUNK=false craco build && zip -r build.zip build -x \"*.DS_Store\"",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "icons": "npx @svgr/cli --icon -d ./src/components/Icon/icons ./public/icons --config-file ./public/icons/svgr-config.json --index-template ./public/icons/index-template.js",
+    "supa": "npx --yes supabase gen types typescript --project-id unzsobquqcpnupsuhnlc > src/lib/Supabase/supabase.types.ts"
   },
   "browserslist": {
     "production": [
@@ -43,5 +49,6 @@
     "@emotion/babel-plugin": "^11.11.0",
     "@types/chrome": "^0.0.237",
     "node-polyfill-webpack-plugin": "^2.0.1"
-  }
+  },
+  "packageManager": "yarn@3.5.1"
 }

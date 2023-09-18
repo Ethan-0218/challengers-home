@@ -1,16 +1,7 @@
-export type DOMMessage = {
-  type: "GET_DOM";
-};
-
-export type DOMMessageResponse = {
-  title: string;
-  headlines: string[];
-};
-
-export type ToggleMessage = {
-  type: "TOGGLE";
-};
-
-export type ToggleMessageResponse = {
-  isOpened: boolean;
-};
+export * from './chrome.types';
+export * from './util.types';
+export * as Bookmark from './bookmark.types';
+export * from './mode.types';
+export * as Meal from './meal.types';
+export * as Schedule from './schedule.types';
+export * as MainMessage from './mainMessage.types';

@@ -1,34 +1,33 @@
-import { useEffect, useState } from 'react';
-import { BehaviorSubject } from 'rxjs';
+import ToggleObserver from '@lib/ToggleObserver';
+import { useModeStore } from '@store/mode.store';
+import { FC, useEffect, useState } from 'react';
 import * as S from './SlideBar.styles';
-import { RecoilRoot } from 'recoil';
+import AddBookmarkButton from './components/AddBookmarkButton/AddBookmarkButton';
 import BookmarkList from './components/BookmarkList/BookmarkList';
 import Header from './components/Header/Header';
+import SearchBar from './components/SearchBar/SearchBar';
 
-const SlideBar = () => {
+const SlideBar: FC = () => {
   const [show, setShow] = useState(false);
-  const [height, setHeiht] = useState(window.innerHeight);
+  const [height, setHeight] = useState(window.innerHeight);
+  const mode = useModeStore((s) => s.mode);
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      setHeiht(window.innerHeight);
+      setHeight(window.innerHeight);
     });
-    const s = toggleObservable.subscribe(setShow);
+    const s = ToggleObserver.subscribe(setShow);
     return () => s.unsubscribe();
   }, []);
 
   return (
-    <RecoilRoot>
-      <S.Container show={show} height={height}>
-        <Header />
-        <BookmarkList />
-      </S.Container>
-    </RecoilRoot>
+    <S.Container show={show} height={height}>
+      <Header />
+      <SearchBar />
+      {mode !== 'search' && <BookmarkList />}
+      <AddBookmarkButton />
+    </S.Container>
   );
 };
 
 export default SlideBar;
-
-export const toggleObservable = new BehaviorSubject<boolean>(true);
-
-export const toggle = () => toggleObservable.next(!toggleObservable.getValue());

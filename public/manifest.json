@@ -1,6 +1,6 @@
 {
-  "name": "Shared bookmark list",
-  "version": "1.0",
+  "name": "challengers home",
+  "version": "1.0.5",
   "manifest_version": 3,
   "action": {},
   "content_scripts": [
@@ -16,10 +16,10 @@
     "service_worker": "./static/js/background.js",
     "type": "module"
   },
-  "permissions": ["activeTab"],
+  "permissions": ["bookmarks", "storage", "tabs"],
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "16": "logox1.png",
+    "48": "logox2.png",
+    "128": "logox2.png"
   }
 }

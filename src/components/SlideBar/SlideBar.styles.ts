@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BAR_WIDTH } from '../../constants/slidebar.constants';
+import { BAR_WIDTH } from '@constants/slidebar.constants';
 
 export const Container = styled.div<{ show: boolean; height: number }>`
   transition: transform 0.3s ease-out;
@@ -13,5 +13,7 @@ export const Container = styled.div<{ show: boolean; height: number }>`
   border-radius: 40px 0 0 40px;
   overflow: hidden;
   background: #ffffff;
-  box-shadow: 7px 0px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: -10px 0px 29px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
 `;

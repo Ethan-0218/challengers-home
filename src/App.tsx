@@ -1,32 +1,35 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SlideBar, { toggle } from './components/SlideBar/SlideBar';
+import ToggleObserver from '@lib/ToggleObserver';
+import { useEffect, useState } from 'react';
+import Home from './components/Home/Home';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import PopupManager from './components/PopupManager/PopupManager';
 
 function App() {
+  const [{ width, height }, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
   useEffect(() => {
-    toggle();
+    ToggleObserver.open();
+    const handleResize = () => {
+      setSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <SlideBar />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Home />
+      {/* <SlideBar /> */}
+      <PopupManager.Portal />
+    </QueryClientProvider>
   );
 }
 
 export default App;
+
+const queryClient = new QueryClient();
