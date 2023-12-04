@@ -1,13 +1,14 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const Container = styled.div<{ active: boolean }>`
+export const Container = styled.div<{ active: boolean; clickable?: boolean }>`
   display: flex;
   width: 292px;
   height: 82px;
   padding: 0 20px;
   gap: 12px;
   align-items: center;
+  cursor: pointer;
 
   ${({ active }) =>
     active
@@ -15,7 +16,7 @@ export const Container = styled.div<{ active: boolean }>`
           border-radius: 12px;
           background: rgba(255, 184, 79, 0.1);
         `
-      : ''}
+      : ''};
 `;
 
 export const DayBox = styled.div`

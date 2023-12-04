@@ -22,12 +22,37 @@ export const getMealList = async (
     .gte('serve_at', startDate.toISOString())
     .lte('serve_at', endDate.toISOString());
   const meals: Meal.Info[] = (data || []).map((d) => ({
+    id: d.id,
     type: d.type as Meal.Type,
     main: d.main?.split(',') || [],
     sub: d.sub?.split(',') || [],
     serveAt: new Date(d.serve_at),
   }));
   return { meals };
+};
+
+export const addMealItem = async (
+  meal: Pick<Meal.Info, 'main' | 'sub' | 'serveAt'>,
+) => {
+  const { error } = await supabase.from('meal_menu').insert({
+    type: 'LUNCH',
+    main: meal.main.join(','),
+    sub: meal.sub.join(','),
+    serve_at: meal.serveAt.toISOString(),
+  });
+  return !error;
+};
+
+export const editMealItem = async (meal: Meal.Info) => {
+  const { error } = await supabase
+    .from('meal_menu')
+    .update({
+      type: 'LUNCH',
+      main: meal.main.join(','),
+      sub: meal.sub.join(','),
+    })
+    .eq('id', meal.id);
+  return !error;
 };
 
 export const getScheduleList = async (

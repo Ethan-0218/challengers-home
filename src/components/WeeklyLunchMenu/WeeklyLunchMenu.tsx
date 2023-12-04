@@ -1,21 +1,13 @@
+import { useWeeklyLunchMenu } from '@queries/useWeeklyLunchMenu';
 import { getDaysInThisWeek } from '@utils/date.utils';
+import { isSameDay } from 'date-fns';
 import Font from '../Font/Font';
 import * as S from './WeeklyLunchMenu.styles';
 import MenuItem from './components/MenuItem/MenuItem';
-import { useEffect, useState } from 'react';
-import { Meal } from '@types';
-import { Supabase } from '@lib/Supabase';
-import { isSameDay } from 'date-fns';
 
 const LunchMenu = () => {
   const days = getDaysInThisWeek(new Date());
-  const [meals, setMeals] = useState<Meal.Info[]>([]);
-
-  useEffect(() => {
-    Supabase.getMealList(days[0], days[days.length - 1]).then(({ meals }) =>
-      setMeals(meals),
-    );
-  }, []);
+  const { data: meals = [] } = useWeeklyLunchMenu();
 
   return (
     <S.Container>

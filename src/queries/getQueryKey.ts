@@ -3,6 +3,7 @@ interface QueryList {
   BOOKMARK_LIST: undefined;
   BOOKMARK_FOLDER_LIST: undefined;
   MAIN_MESSAGE: undefined;
+  WEEKLY_LUNCH_MENU: undefined;
 }
 
 const getQueryKey = <T extends keyof QueryList>(
