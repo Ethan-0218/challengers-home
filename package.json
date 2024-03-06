@@ -31,7 +31,9 @@
     "test": "craco test",
     "eject": "react-scripts eject",
     "icons": "npx @svgr/cli --icon -d ./src/components/Icon/icons ./public/icons --config-file ./public/icons/svgr-config.json --index-template ./public/icons/index-template.js",
-    "supa": "npx --yes supabase gen types typescript --project-id unzsobquqcpnupsuhnlc > src/lib/Supabase/supabase.types.ts"
+    "supa": "npx --yes supabase gen types typescript --project-id unzsobquqcpnupsuhnlc > src/lib/Supabase/supabase.types.ts",
+    "functions-dev": "npx supabase functions serve",
+    "functions-deploy": "npx supabase functions deploy"
   },
   "browserslist": {
     "production": [

@@ -6,9 +6,11 @@ import {
   structBookmarkRow,
   structBookmarkTree,
 } from './supabase.utils';
+import fs from 'fs';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY || '';
+const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY || '';
 
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
@@ -171,3 +173,22 @@ export const addMainMessage = async (m: Pick<MainMessage.Info, 'text'>) => {
   });
   return !error;
 };
+
+export const parseMenuByImage = async (imageFile: File): Promise<Meal.Info[]|null> => {
+  const {data, error} = await supabase.functions.invoke('menu-detect', {
+    method: 'POST',
+    body: imageFile
+  })
+
+  if (error) {
+    console.error(error)
+    return null
+  } 
+
+  return data.menus.map((m: any):Omit<Meal.Info, 'id'> => ({
+    type: 'LUNCH',
+    main: m.mainMenu,
+    sub: m.subMenu,
+    serveAt: new Date(m.serveAt)    
+  }))
+}

@@ -2,10 +2,20 @@
 // https://deno.land/manual/getting_started/setup_your_environment
 // This enables autocomplete, go to definition, etc.
 
-console.log("Hello from Functions!")
 const API_KEY = 'AIzaSyBzeM9HVxn1bcJP_4KL_AyN96OMczU35BY'
 
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
 Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', {
+      headers: corsHeaders
+    })
+  }
+
   const imageBinary = await convertStream2base64(req.body)
 
   const data = {
@@ -48,11 +58,12 @@ Deno.serve(async (req) => {
 
   const {candidates} = await res.json()
   const result = candidates[0].content.parts[0].text
-  const json = extractJson(result)
+  const menus = extractJson(result)
+  const json = {menus}
 
   return new Response(
    JSON.stringify(json),
-    { headers: { "Content-Type": "application/json" } },
+    { headers: { "Content-Type": "application/json" , ...corsHeaders} },
   )
 })
 
