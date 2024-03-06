@@ -183,12 +183,12 @@ export const parseMenuByImage = async (imageFile: File): Promise<Meal.Info[]|nul
   if (error) {
     console.error(error)
     return null
-  } 
+  }
 
   return data.menus.map((m: any):Omit<Meal.Info, 'id'> => ({
     type: 'LUNCH',
     main: m.mainMenu,
     sub: m.subMenu,
-    serveAt: new Date(m.serveAt)    
+    serveAt: new Date(m.date)    
   }))
 }
