@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './MenuUploadPopup.styles';
-import MenuImage from './components/MenuImage/MenuImage';
 import MenuEditor from './components/MenuEditor/MenuEditor';
+import MenuImage from './components/MenuImage/MenuImage';
 
 const MenuUploadPopup = () => {
   const [image, setImage] = React.useState<File | null>(null);

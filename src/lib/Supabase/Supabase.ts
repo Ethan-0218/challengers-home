@@ -1,12 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
-import { Database } from './supabase.types';
 import { Bookmark, MainMessage, Meal, Schedule } from '@types';
+import { startOfDay } from 'date-fns';
+import { Database } from './supabase.types';
 import {
   isBookmarkFolder,
   structBookmarkRow,
   structBookmarkTree,
 } from './supabase.utils';
-import fs from 'fs';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || '';
 const supabaseKey = process.env.REACT_APP_SUPABASE_KEY || '';
@@ -185,10 +185,16 @@ export const parseMenuByImage = async (imageFile: File): Promise<Meal.Info[]|nul
     return null
   }
 
-  return data.menus.map((m: any):Omit<Meal.Info, 'id'> => ({
-    type: 'LUNCH',
-    main: m.mainMenu,
-    sub: m.subMenu,
-    serveAt: new Date(m.date)    
-  }))
+  return data.menus.map((m: any):Omit<Meal.Info, 'id'> => {
+    const date = Number(m.date.split('-')[2])
+    const serveAt = new Date()
+    serveAt.setDate(date)
+    
+    return {
+      type: 'LUNCH',
+      main: m.mainMenu,
+      sub: m.subMenu,
+      serveAt: startOfDay(serveAt) 
+    }
+  })
 }

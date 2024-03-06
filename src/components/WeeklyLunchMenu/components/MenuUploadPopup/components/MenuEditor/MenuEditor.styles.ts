@@ -31,6 +31,7 @@ export const LoadingImage = styled.img`
   width: 70px;
   height: 70px;
   object-fit: cover;
+  margin-bottom: 12px;
 `
 
 export const InputConatiner = styled.div`
@@ -81,3 +82,9 @@ export const SaveButton = styled.div`
   border: none;
   outline: none;
 `;
+
+export const MenuItemEditorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`

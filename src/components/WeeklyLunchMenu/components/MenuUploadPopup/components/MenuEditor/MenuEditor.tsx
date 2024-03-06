@@ -7,17 +7,25 @@ import loading_gif from './loading.gif';
 import MenuItemEditor from '../../../MenuPopup/MenuEditor/MenuEditor';
 import { format } from 'date-fns';
 import PopupManager from '../../../../../PopupManager/PopupManager';
+import { useWeeklyLunchMenu } from '@queries/useWeeklyLunchMenu';
 
 type Props = {
   image: File | null;
 };
 const MenuEditor: FC<Props> = ({ image }) => {
+  const { data: meals = [] } = useWeeklyLunchMenu();
   const [menus, setMenus] = React.useState<Omit<Meal.Info, 'id'>[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSave = async () => {
     for (const menu of menus) {
-      // await Supabase.addMealItem(menu);
+      const id = meals.find(
+        (m) =>
+          format(m.serveAt, 'yyyy-MM-dd') ===
+          format(menu.serveAt, 'yyyy-MM-dd'),
+      )?.id;
+      if (id) await Supabase.editMealItem({ id, ...menu });
+      else await Supabase.addMealItem(menu);
     }
   };
 
@@ -72,6 +80,9 @@ const NoImageMessage = () => (
 const Loading = () => (
   <S.MessageContainer>
     <S.LoadingImage src={loading_gif} />
+    <Font family="Pretendard" size={16} color="#666">
+      Powered by Gemini
+    </Font>
   </S.MessageContainer>
 );
 
@@ -89,7 +100,7 @@ const MenuInput: FC<MenuInputProps> = ({ menu, onChange }) => {
   };
 
   return (
-    <>
+    <S.MenuItemEditorContainer>
       <Font family="Pretendard" size={24} weight={800} color="#333">
         {format(menu.serveAt, 'M월 d일')}
       </Font>
@@ -106,6 +117,6 @@ const MenuInput: FC<MenuInputProps> = ({ menu, onChange }) => {
         menus={menu.sub}
         onChange={handleChangeSubMenus}
       />
-    </>
+    </S.MenuItemEditorContainer>
   );
 };
