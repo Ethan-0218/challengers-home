@@ -39,3 +39,15 @@ export const MenuContainer = styled.div<{ color: string }>`
       background-color: ${color}22;
     `}
 `;
+
+export const MenuRemoveButton = styled.button`
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
