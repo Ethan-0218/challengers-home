@@ -37,8 +37,9 @@ const MenuEditor: FC<Props> = (props) => {
   };
 
   const handleKeyDown = (e: any, i: number) => {
-    if (e.code === 'Enter') {
+    if (e.code === 'Enter' || e.code === 'Tab') {
       e.preventDefault();
+      if (e.nativeEvent.isComposing) return;
       handleChangeMenu(e.target.innerText, i);
       if (i < menus.length - 1) {
         refs[i + 1].current?.focus();
